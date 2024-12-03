@@ -10,9 +10,9 @@ import PaqueteLectura.Lector;
 /*
 Realice un programa que instancie un estacionamiento con 3 pisos y 3 plazas por piso.
 Registre 6 autos en el estacionamiento en distintos lugares.
-Muestre la representación String del estacionamiento en consola.
-Muestre la cantidad de autos ubicados en la plaza 1.
-Lea una patente por teclado e informe si dicho auto se encuentra en el estacionamiento
+    Muestre la representación String del estacionamiento en consola.
+    Muestre la cantidad de autos ubicados en la plaza 1.
+    Lea una patente por teclado e informe si dicho auto se encuentra en el estacionamiento
 o no. En caso de encontrarse, la información a imprimir es el piso y plaza que ocupa
  */
 public class Practica5_P2 {

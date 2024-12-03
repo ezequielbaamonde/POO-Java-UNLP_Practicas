@@ -29,7 +29,7 @@ public class Practica1_P3 {
         int i, j;
         for (i=0;i<5; i++){
             for (j=0; j<5; j++){
-                matriz [i][j] = GeneradorAleatorio.generarInt(30);
+                matriz [i][j] = GeneradorAleatorio.generarInt(30); //0 a 30
             }
         }
         //Paso 3. mostrar el contenido de la matriz en consola

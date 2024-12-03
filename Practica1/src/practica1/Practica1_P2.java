@@ -15,14 +15,14 @@ public class Practica1_P2 {
     NOTA: Dispone de un esqueleto para este programa en Ej02Jugadores.java
     */
     public static void main(String[] args) {
-        int DF = 16;
+        int DF = 15;
         double [] tablaJugadores = new double[DF]; //vector de alturas jugadores
         
         int i;
         int altura, suma = 0; //altura para leer y suma en 0 para acumular alturas
         //Agrego alturas al vectory acumulo en "suma"
-        for (i=0; i<16; i++){
-            System.out.println("Ingrese la altura del jugador N°" + i+ " en CM (xxx)");
+        for (i=0; i<15; i++){
+            System.out.println("Ingrese la altura del jugador N°" + (i+1) + " en CM (xxx)");
             System.out.println("-------------------------------");
             altura = Lector.leerInt();
             suma = suma + altura;
@@ -34,7 +34,7 @@ public class Practica1_P2 {
         
        //Recorro y sumo cantidad de jugadores por encima del promedio
        int cant = 0;
-       for (i=0; i<16; i++){
+       for (i=0; i<15; i++){
            if (tablaJugadores[i] > promedio) cant = cant + 1; 
        }
        System.out.println("La cantidad de jugadores con altura por encima del promedio son: " + cant);
