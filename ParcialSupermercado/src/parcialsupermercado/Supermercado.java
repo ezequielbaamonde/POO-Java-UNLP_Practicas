@@ -10,6 +10,7 @@ package parcialsupermercado;
  * @author Ezequiel Baamonde
  */
 public class Supermercado {
+
     private String nombre;
     private String direccion;
     private Productos[][] matProd; //1...G y 1...E
@@ -20,69 +21,64 @@ public class Supermercado {
     public Supermercado(String nombre, String direccion, int G, int E) {
         this.nombre = nombre;
         this.direccion = direccion;
-        this.G = G;
+        this.G = G; //max gondolas
         this.dimG = 0; //gondolas llenas 0;
-        this.E = E;
+        this.E = E; //max estantes
         this.matProd = new Productos[getG()][getE()]; //Inicialmente sin productos
         iniVector();
     }
-    private void iniVector(){
+
+    private void iniVector() {
         this.dimL = new int[getG()]; //cant gondolas para el vector de dimL
-        for (int i=0; i<getG(); i++){
+        for (int i = 0; i < getG(); i++) {
             this.dimL[i] = 0; //cada gondola tiene 0 estantes llenos
         }
     }
 
-    
     /* 2.A */
-    public void setProductos(Productos p){
-        if (this.dimL[getDimG()] < getE()){
+    public void setProductos(Productos p) {
+        if ((this.dimG < getG()) && (this.dimL[getDimG()] < getE())) { //si dimG no supero a la cant gondolas y en esa gondola no se superaron los estantes
             this.matProd[getDimG()][this.dimL[getDimG()]] = p; //en la gondola dimG y en el estante de la gondola dimG, añado prod
-            this.dimL[getDimG()]++; //Incremento productos de esa gondola (DimG)
-        }else{
-            if(getDimG() < getG()){ //si mi cant gondolas llenas siguen siendo menor a mi cant de gondolas
-                this.dimG++; //incremento gondola que se lleno
-                this.matProd[getDimG()][this.dimL[getDimG()]] = p;   
-                this.dimL[getDimG()]++;
+            this.dimL[getDimG()]++; //Incremento productos de esa gondola (DimG) 
+            if (this.dimL[getDimG()] == getE()) { //pregunto si se lleno el estante
+                this.dimG++; //incremento cantgondola ya que se lleno
             }
         }
     }
-    
-    public String marcaM(String m, int x){
+
+    public String marcaM(String m, int x) {
         String aux = "";
-        for (int c=0; c < this.dimL[x-1]; c++){
-            if(this.matProd[x-1][c].getMarca().equals(m)){
-                aux += "Producto "+ (c+1) + ", " + this.matProd[x-1][c].toString()+"\n";
+        for (int c = 0; c < this.dimL[x - 1]; c++) {
+            if (this.matProd[x - 1][c].getMarca().equals(m)) {
+                aux += "Producto " + (c + 1) + ", " + this.matProd[x - 1][c].toString() + "\n";
             }
         }
         return aux;
     }
-    
-    
+
     /*public String deMatriz(){
         String aux = "";
         aux += matProd[1][0].toString();
 
         return aux;
     }*/
-    
-    public int maxUnidades(){
+    public int maxUnidades() {
         int suma;
         int codMax = -1; //codigo max de gondola
         int max = -1; //suma max
-        for (int i=0; i <= getDimG(); i++){ //menor igual si o si
+        for (int i = 0; i < getDimG(); i++) { //menor igual si o si
             suma = 0; //para cada gondola reinicio suma
-            for (int j=0; j<this.dimL[i]; j++){
+            for (int j = 0; j < this.dimL[i]; j++) {
                 suma = suma + this.matProd[i][j].getCantU();
             }
-            if (suma > max){
+            if (suma > max) {
                 max = suma;
                 codMax = i;
             }
-        }   
-        return (codMax+1);
+        }
+        return (codMax + 1);
     }
-    
+
     /* Getters and setters*/
     public String getNombre() {
         return nombre;
@@ -126,11 +122,11 @@ public class Supermercado {
 
     @Override
     public String toString() {
-        String aux = "Supermercado: " + getNombre() + "; " + getDireccion() +"\n";
-        for (int i=0; i<=getDimG(); i++){
-            aux += "Gondola "+ (i+1) + ".\n";
-            for (int j=0; j < this.dimL[i]; j++){
-                aux += " -{" + matProd[i][j].toString()+"}\n";
+        String aux = "Supermercado: " + getNombre() + "; " + getDireccion() + "\n";
+        for (int i = 0; i < getDimG(); i++) {
+            aux += "Gondola " + (i + 1) + ".\n";
+            for (int j = 0; j < this.dimL[i]; j++) {
+                aux += " -{" + matProd[i][j].toString() + "}\n";
             }
         }
         return aux;
