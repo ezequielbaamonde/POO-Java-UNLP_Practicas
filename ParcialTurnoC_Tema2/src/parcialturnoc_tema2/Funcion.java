@@ -7,7 +7,7 @@ package parcialturnoc_tema2;
 
 /**
  *
- * @author Ezequiel Baamonde
+ * @author Ezequiel Baamonde.
  */
 public class Funcion {
     private String titulo;
